@@ -6,7 +6,7 @@ import { indexExpenses } from '../../api/expenseApi'
 function FakeApp (props) {
   const [expenses, setExpenses] = useState([])
   const [deleteTrigger, setDeleteTrigger] = useState(false)
-  const [updateTrigger, setUpdateTriger] = useState(false)
+  const [updateTrigger, setUpdateTrigger] = useState(false)
 
   useEffect(() => {
     const getExpenses = async () => {
@@ -39,7 +39,7 @@ function FakeApp (props) {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} user={props.user}></NewExpense>
-      <Expenses dt={setDeleteTrigger} dts={deleteTrigger} ut={setUpdateTriger} items={expenses} user={props.user} />
+      <Expenses dt={setDeleteTrigger} dts={deleteTrigger} ut={setUpdateTrigger} items={expenses} user={props.user} />
     </div>
   )
 }
