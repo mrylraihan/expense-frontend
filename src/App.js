@@ -10,6 +10,10 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import Home from './components/Home/Home'
+import ExpenseCreate from './components/crud/CreateExpense/ExpenseCreate'
+import ModifyExpense from './components/crud/ModifyExpense/ModifyExpense'
+import UpdateExpense from './components/crud/ModifyExpense/UpdateExpense'
+import GetAllExpenses from './components/crud/GetAllExpense/GetAllExpenses'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -38,7 +42,7 @@ const App = () => {
         <Routes>
           <Route
             exact path='/'
-            element={<Home user={user}/>}
+            element={<Home user={user} />}
           />
           <Route
             path='/sign-up'
@@ -55,6 +59,22 @@ const App = () => {
           <Route
             path='/change-password'
             element={<ChangePassword msgAlert={msgAlert} user={user} /> }
+          />
+          <Route
+            path='/expenses'
+            element={< GetAllExpenses msgAlert={msgAlert} user={user} /> }
+          />
+          <Route
+            path='/expenses/create'
+            element={< ExpenseCreate msgAlert={msgAlert} user={user} /> }
+          />
+          <Route
+            path='/expenses/:id'
+            element={< ModifyExpense msgAlert={msgAlert} user={user} /> }
+          />
+          <Route
+            path='/expenses/:id/edit'
+            element={< UpdateExpense msgAlert={msgAlert} user={user} /> }
           />
 
         </Routes>

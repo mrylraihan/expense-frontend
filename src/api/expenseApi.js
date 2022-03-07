@@ -28,7 +28,7 @@ export const deleteExpense = (id, user) => {
 export const updateExpense = (id, title, amount, date, user) => {
   return axios.patch(
     `${apiUrl}/expenses/${id}`,
-    { task: { title, amount, date } },
+    { expense: { title, amount, date } },
     {
       headers: {
         Authorization: `Bearer ${user.token}`
