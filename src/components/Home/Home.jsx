@@ -1,11 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Expenses from '../../components/Expenses/Expenses'
+import { indexExpenses } from '../../api/expenseApi'
 // import { Link } from 'react-router-dom'
 
 const Home = (props) => {
+  const [expense, setExpenses] = useState([])
+
+  useEffect(() => {
+    const fetchExpenses = async () => {
+      try {
+        const res = await indexExpenses(props.user)
+        setExpenses(res.data.expenses)
+      } catch (error) {
+        props.msgAlert({
+          heading: 'Expense List failed to load',
+          message: error.message,
+          variant: 'danger'
+        })
+      }
+    }
+    fetchExpenses()
+  }, [props.expenses])
+
   if (props.user) {
     return (
       <>
         <h1>Create an Expense!</h1>
+        <Expenses items={expense} />
       </>
     )
   } else {

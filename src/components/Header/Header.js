@@ -3,28 +3,32 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import { Link, NavLink } from 'react-router-dom'
+import { VscHome, VscAccount, VscSignIn, VscGraph, VscUnlock, VscSignOut, VscChecklist, VscEdit } from 'react-icons/vsc'
 
 const authenticatedOptions = (
   <>
-    <NavLink to='/change-password' className='nav-link'>Change Password</NavLink>
-    <NavLink to='/sign-out' className='nav-link'>Sign Out</NavLink>
-    <NavLink to='/expenses' className='nav-link'>Get Expense</NavLink>
-    <NavLink to='/expenses/create' className='nav-link'>Create Expense</NavLink>
+    <NavLink to='/' className='nav-link'><VscGraph></VscGraph></NavLink>
+    <NavLink to='/expenses' className='nav-link'><VscChecklist/></NavLink>
+    <NavLink to='/expenses/create' className='nav-link'><VscEdit/></NavLink>
+    <NavLink to='/change-password' className='nav-link'><VscUnlock/></NavLink>
+    <NavLink to='/sign-out' className='nav-link'><VscSignOut/></NavLink>
   </>
 )
 
 const unauthenticatedOptions = (
   <>
-    <NavLink to='/sign-up' className='nav-link'>Sign Up</NavLink>
-    <NavLink to='/sign-in' className='nav-link'>Sign In</NavLink>
+    <NavLink to='/' className='nav-link'><VscHome></VscHome></NavLink>
+    <NavLink to='/sign-up' className='nav-link'><VscSignIn></VscSignIn></NavLink>
+    <NavLink to='/sign-in' className='nav-link'><VscAccount></VscAccount></NavLink>
   </>
 )
 
-const alwaysOptions = (
-  <>
-    <NavLink to='/' className='nav-link'>Home</NavLink>
-  </>
-)
+// const alwaysOptions = (
+//   <>
+//     <NavLink to='/' className='nav-link'><VscHome></VscHome></NavLink>
+//   </>
+
+// )
 
 const Header = ({ user }) => (
   <Navbar bg='primary' variant='dark' expand='md'>
@@ -38,7 +42,7 @@ const Header = ({ user }) => (
           {user && (
             <span className='navbar-text me-2'>Welcome, {user.username}</span>
           )}
-          {alwaysOptions}
+          {/* {alwaysOptions} */}
           {user ? authenticatedOptions : unauthenticatedOptions}
         </Nav>
       </Navbar.Collapse>

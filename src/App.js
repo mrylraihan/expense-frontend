@@ -18,6 +18,7 @@ import GetAllExpenses from './components/crud/GetAllExpense/GetAllExpenses'
 const App = () => {
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
+  const [list, getList] = useState([])
 
   const clearUser = () => setUser(null)
 
@@ -42,7 +43,7 @@ const App = () => {
         <Routes>
           <Route
             exact path='/'
-            element={<Home user={user} />}
+            element={<Home expenses={list} msgAlert={msgAlert} user={user} />}
           />
           <Route
             path='/sign-up'
@@ -62,7 +63,7 @@ const App = () => {
           />
           <Route
             path='/expenses'
-            element={< GetAllExpenses msgAlert={msgAlert} user={user} /> }
+            element={< GetAllExpenses msgAlert={msgAlert} getList={getList} user={user} /> }
           />
           <Route
             path='/expenses/create'

@@ -13,7 +13,7 @@ const ExpenseItem = (props) => {
       </p>
       <div>
         <div>
-          <p>${props.expense.amount}</p>
+          <p>{props.expense.amount}</p>
           <p>{props.expense.date}</p>
           {/* <TaskDate date={props.task.date}></TaskDate> */}
         </div>
