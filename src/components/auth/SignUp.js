@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignUp = ({ msgAlert, setUser }) => {
+  const [username, setUserName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -17,7 +18,7 @@ const SignUp = ({ msgAlert, setUser }) => {
     event.preventDefault()
 
     try {
-      await signUp(email, password, passwordConfirmation)
+      await signUp(username, email, password, passwordConfirmation)
       const res = await signIn(email, password)
       setUser(res.data.user)
       msgAlert({
@@ -27,6 +28,7 @@ const SignUp = ({ msgAlert, setUser }) => {
       })
       setShouldNavigate(true)
     } catch (error) {
+      setUserName('')
       setEmail('')
       setPassword('')
       setPasswordConfirmation('')
@@ -47,6 +49,17 @@ const SignUp = ({ msgAlert, setUser }) => {
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
         <h3>Sign Up</h3>
         <Form onSubmit={onSignUp}>
+          <Form.Group controlId='username'>
+            <Form.Label>UserName</Form.Label>
+            <Form.Control
+              required
+              type='username'
+              name='username'
+              value={username}
+              placeholder='Enter username'
+              onChange={event => setUserName(event.target.value)}
+            />
+          </Form.Group>
           <Form.Group controlId='email'>
             <Form.Label>Email address</Form.Label>
             <Form.Control
