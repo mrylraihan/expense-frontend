@@ -31,7 +31,7 @@ const unauthenticatedOptions = (
 // )
 
 const Header = ({ user }) => (
-  <Navbar bg='primary' variant='dark' expand='md'>
+  <Navbar bg='dark' variant='dark' expand='md'>
     <Container>
       <Navbar.Brand>
         <Link to='/' style={{ color: '#FFF', textDecoration: 'none' }}>Expense-Tracker</Link>

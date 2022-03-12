@@ -1,24 +1,27 @@
 
 import React from 'react'
+import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import ExpenseDate from '../../../Expenses/ExpenseDate'
+import './ExpenseItem.css'
 
 const ExpenseItem = (props) => {
   return (
-    <div className='expense-item'>
-      <p
-        key={props.expense._id}>
-        <Link className='expense-item-date' to={`/expenses/${props.expense._id}`}>
+
+    <Card className='expense-item'>
+      <Link className='expense-item link-warning' to={`/expenses/${props.expense._id}`}>
+        <h3 key={props.expense._id}>
           {props.expense.title}
-        </Link>
-      </p>
+        </h3>
+      </Link>
       <div>
         <div>
-          <p>{props.expense.amount}</p>
-          <p>{props.expense.date}</p>
+          <p className='expense-item__price'>{`$${props.expense.amount}`}</p>
+          <ExpenseDate date={props.expense.date}/>
           {/* <TaskDate date={props.task.date}></TaskDate> */}
         </div>
       </div>
-    </div>
+    </Card>
   )
 }
 

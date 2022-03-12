@@ -3,7 +3,9 @@ import { Spinner } from 'react-bootstrap'
 import { Navigate } from 'react-router-dom'
 import { indexExpenses } from '../../../api/expenseApi'
 import ExpenseItem from '../../UI/Form/ExpenseItem/ExpenseItem'
+// import './GetAllExpenses.css'
 import Card from '../../UI/Card/Card'
+// import ExpenseDate from '../../Expenses/ExpenseDate'
 
 const GetAllExpenses = ({ user, msgAlert, getList }) => {
   const [expenses, setExpenses] = useState([])
@@ -34,15 +36,27 @@ const GetAllExpenses = ({ user, msgAlert, getList }) => {
     )
   }
   const expensesList = expenses.map((expense) => (
-    <Card className="expense-item" key={expense._id}>
-      <ExpenseItem
-        //   fetchExpenses={fetchExpenses}
-        key={expense._id}
-        expense={expense}
-        user={user}
-        msgAlert={msgAlert}>
-      </ExpenseItem>
-    </Card>
+    <ExpenseItem
+      //   fetchExpenses={fetchExpenses}
+      key={expense._id}
+      expense={expense}
+      date={expense.date}
+      title={expense.title}
+      amount={expense.amount}
+      user={user}
+      msgAlert={msgAlert}>
+    </ExpenseItem>
+    // <li key={expense._id} user={user}>
+    //   <Card className="expense-item">
+    //     <div>
+    //       <div className='expense-item'>
+    //         <h1>{expense.title}</h1>
+    //         <div className='expense-item__price'>{`$${expense.amount}`}</div>
+    //         <ExpenseDate date={expense.date}></ExpenseDate>
+    //       </div>
+    //     </div>
+    //   </Card>
+    // </li>
   ))
   return (
     <Card className='expenses'>

@@ -19,7 +19,9 @@ const Home = (props) => {
         })
       }
     }
-    fetchExpenses()
+    if (props.user) {
+      fetchExpenses()
+    }
   }, [props.expenses])
 
   if (props.user) {
