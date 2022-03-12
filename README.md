@@ -67,7 +67,9 @@ React. Some of these routes should not be available unless a user is signed in,
 so they will redirect to the `/` page if not signed in.
 
 ## ERD and UserStory Setup
-images
+
+<img width="539" alt="erd" src="https://user-images.githubusercontent.com/53843824/158031614-905767be-2d75-4316-8d32-dd44f6019b13.png">
+<img width="559" alt="userstory" src="https://user-images.githubusercontent.com/53843824/158031617-36b4ff2e-362a-4c4f-b317-bb4a826dd5da.png">
 
 ## [License](LICENSE)
 
